@@ -1,0 +1,17 @@
+{
+    "name": "clovis/products-list-with-cart",
+    "require": {
+        "twig/twig": "^3.18"
+    },
+    "autoload":  {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lenybare",
+            "email": "cfontaine@edenschool.fr"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+services:
+  php-app:
+    build: .
+    depends_on:
+      - phpmyadmin
+      - db
+    env_file:
+      - ./.env
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin_container
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:9.1
+    env_file:
+      - ./.env
+    volumes:
+      - ./data/export.sql:/docker-entrypoint-initdb.d/init.sql
