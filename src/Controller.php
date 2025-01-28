@@ -7,10 +7,15 @@ use Twig\Loader\FilesystemLoader;
 
 class Controller
 {
-     public function render($name, $arrayAssoc = null)
+     public function renderTwig($name, $arrayAssoc = null)
      {
           $loader = new FilesystemLoader('./views/');
           $twig = new Environment($loader);
           return $twig->render($name, $arrayAssoc);
+     }
+
+     public function renderPHP($name, $data = null) {
+         extract($data);
+         require 'views/' . $name;
      }
 }

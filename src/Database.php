@@ -10,7 +10,7 @@ abstract class Database
      
      
      public function __construct() {
-// Configuration de la base de données
+         // Configuration de la base de données
           $host = 'localhost';
           $dbname = 'mvc_database';
           $username = 'root';

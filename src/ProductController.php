@@ -9,7 +9,8 @@ class ProductController extends Controller
      {
           $product = new Product();
           $products = $product->getAll();
-          return $this->render('home.html.twig', ["products" => $products]);
+          return $this->renderPHP('product-view.php', ["products" => $products]);
+          // return $this->renderTwig('home.html.twig', ["products" => $products]);
 
      }
 }
