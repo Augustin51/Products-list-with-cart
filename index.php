@@ -3,10 +3,12 @@
 ini_set('display_errors', 1);
 
 require_once 'vendor/autoload.php';
+require_once 'technical/env.php';
 
 //use App\ProductControler;
 use App\Product;
 use App\User;
+
 
 echo "Hello, World!";
 
@@ -47,3 +49,4 @@ echo $router->dispatch($URL);
 
 //require_once './src/ProductControler.php';
 //$aa = new ProductControler();
+
