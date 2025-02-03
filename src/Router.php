@@ -6,16 +6,23 @@ namespace App;
 class Router
 {
      private $routes = [
-            '/' => "ProductController@index",
-            '/user' => "UserController@index",
-            '/register-form' => "UserController@showForm",
-            '/register' => "UserController@register"
-         ];
-     
+         '/' => "ProductController@index",
+         '/user' => "UserController@index",
+         '/register-form' => "UserController@showForm",
+         '/register' => "UserController@register",
+         '/product' => "ProductController@productDetails"
+     ];
+
      public function dispatch($requestUri)
      {
-          // Récupération de la page demandée
-          $requestUri = urldecode($requestUri);
+         $segments = explode('/', $requestUri);
+         if(isset($segments[2])) {
+             $param = $segments[2];
+             $requestUri = '/' . $segments[1];
+         } else {
+              $requestUri = urldecode($requestUri);
+         }
+
           if (!array_key_exists($requestUri, $this->routes)) {
                echo "Page introuvable";
                return;
@@ -37,7 +44,11 @@ class Router
                echo "La méthode n'existe pas";
                return;
           }
-          return $controller->{$controllerFunctionName}();
-          
+
+          if(isset($param)) {
+              return $controller->{$controllerFunctionName}($param);
+          } else {
+              return $controller->{$controllerFunctionName}();
+          }
      }
 }
