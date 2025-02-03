@@ -6,15 +6,17 @@ require_once 'vendor/autoload.php';
 require_once 'technical/env.php';
 
 //use App\ProductControler;
+use App\Router;
 use App\Product;
 use App\User;
+use App\EntityManager;
 
 
 //echo "Hello, World!";
 
 
-$firstUser = new User('1', 'John', 'Doe', 'johndoe@example.com', '123456');
-$secondUser = new User('2', 'Jane', 'Smith', 'janesmith@example.com', '654321');
+//$firstUser = new User('1', 'John', 'Doe', 'johndoe@example.com', '123456');
+//$secondUser = new User('2', 'Jane', 'Smith', 'janesmith@example.com', '654321');
 
 //$firstUser->_construct('1', 'John', 'Doe', 'johndoe@example.com', '123456');
 //$secondUser->_construct('2', 'Jane', 'Smith', 'janesmith@example.com', '654321');
@@ -31,8 +33,8 @@ $secondUser = new User('2', 'Jane', 'Smith', 'janesmith@example.com', '654321');
 //$firstUser->displayInfos();
 
 
-$product1 = new Product();
-$allProducts = $product1->getAll();
+//$product1 = new Product();
+//$allProducts = $product1->getAll();
 
 //require_once 'views/homeviews.php';
 
@@ -40,13 +42,11 @@ $allProducts = $product1->getAll();
 //echo $productControler->index();
 echo '<br>';
 
-use App\Router;
 
 $router = new Router();
-//$pathToSend = explode('/products-list-with-cart', $_SERVER['REQUEST_URI'])[1];
 $URL = ($_SERVER['REQUEST_URI']);
 echo $router->dispatch($URL);
 
-//require_once './src/ProductControler.php';
-//$aa = new ProductControler();
+$EntityManager = new EntityManager('users');
+$EntityManager->delete(5);
 
